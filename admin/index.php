@@ -5,13 +5,19 @@ function debug($data){
     die;
 }
 
+include 'class/Users.php';
+
 $dir = explode('\\', __DIR__);
-debug($dir);
+
+$path = array_pop($dir);
+
+$url_path = implode('/', $dir);
+
+define('ADMIN_ASSET_URL', $url_path.'/public/admin');
 
 $request_uri = $_SERVER['REQUEST_URI'];
 
 $url = explode('/', $request_uri);
-//$url[1] = admin, $url[2] = login;
 
 if(isset($url[1]) && $url[1] == 'admin') {
 
