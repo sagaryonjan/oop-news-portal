@@ -1,4 +1,4 @@
-<?php $path = '../public/admin/'; ?>
+<?php $path = ADMIN_ASSET_URL; ?>
 
 <!DOCTYPE html>
 <html lang="en">

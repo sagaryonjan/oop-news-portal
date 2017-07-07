@@ -1,59 +1,43 @@
 <?php
-function debug($data){
-    echo '<pre>';
-    print_r($data);
-    die;
-}
+
+include 'config/function.php';
 
 include 'class/Users.php';
 
-$dir = explode('\\', __DIR__);
+include '../config/config.php';
 
-$path = array_pop($dir);
-
-$url_path = implode('/', $dir);
-
-define('ADMIN_ASSET_URL', $url_path.'/public/admin');
-
-$request_uri = $_SERVER['REQUEST_URI'];
-
-$url = explode('/', $request_uri);
+$routes = require 'config/route.php';
 
 if(isset($url[1]) && $url[1] == 'admin') {
 
-    if(isset($url[2]) && $url[2] == 'login') {
+    foreach ($routes as $route) {
 
-        include 'login.php';
-        exit;
-    }
+        if(isset($url[2]) && $url[2] == $route['url']) {
 
-    if(isset($url[2]) && $url[2] == 'dashboard') {
+            if(isset($route['action'])) {
 
-        include 'dashboard.php';
-        exit;
-    }
+                foreach ($route['action'] as $action) {
 
-    if(isset($url[2]) && $url[2] == 'category') {
+                    if(isset($url[3]) && $url[3] == $action['url']) {
 
-        if(isset($url[3]) && $url[3] == 'index') {
+                        checkIfFileExistsAndInclude($action['file']);
 
-            include 'category_list.php';
-            exit;
+                    }
+
+                }
+
+            }
+            else {
+
+                checkIfFileExistsAndInclude($route['file']);
+
+            }
+
         }
-        if(isset($url[3]) && $url[3] == 'create'){
-
-            include 'category_create.php';
-            exit;
-        }
-
     }
 
-    die('no url');
+  die('no Url');
 
 } else {
 
 }
-
-/*UPDATE wp_options SET option_value = replace(option_value,
- 'http://rastrakhabar.onecraftdesign.com/', 'http://www.rastrakhabar.com')
- WHERE option_name = 'home' OR option_name = 'siteurl';*/

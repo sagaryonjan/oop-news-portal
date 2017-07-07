@@ -13,4 +13,15 @@ class Database
        echo 'Looggein';
    }
 
+    protected function sanitizing($data) {
+
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+
+
+
+        return $data;
+    }
+
 }

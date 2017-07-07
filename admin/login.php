@@ -1,14 +1,9 @@
-<?php $path = '../public/admin/';
-
+<?php
 $users = new Users();
 
-print_r($users->login());
-die;
-print_r($_POST);
-die;
+$users->login($_POST);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,29 +15,29 @@ die;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="<?php echo $path; ?>css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo $path; ?>font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?php echo ADMIN_ASSET_URL; ?>css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?php echo ADMIN_ASSET_URL; ?>font-awesome/4.5.0/css/font-awesome.min.css" />
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="<?php echo $path; ?>css/fonts.googleapis.com.css" />
+    <link rel="stylesheet" href="<?php echo ADMIN_ASSET_URL; ?>css/fonts.googleapis.com.css" />
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="<?php echo $path; ?>css/ace.min.css" />
+    <link rel="stylesheet" href="<?php echo ADMIN_ASSET_URL; ?>css/ace.min.css" />
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="<?php echo $path; ?>css/ace-part2.min.css" />
+    <link rel="stylesheet" href="<?php echo ADMIN_ASSET_URL; ?>css/ace-part2.min.css" />
     <![endif]-->
-    <link rel="stylesheet" href="<?php echo $path; ?>css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="<?php echo ADMIN_ASSET_URL; ?>css/ace-rtl.min.css" />
 
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="<?php echo $path; ?>css/ace-ie.min.css" />
+    <link rel="stylesheet" href="<?php echo ADMIN_ASSET_URL; ?>css/ace-ie.min.css" />
     <![endif]-->
 
     <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
     <!--[if lte IE 8]>
-    <script src="<?php echo $path; ?>js/html5shiv.min.js"></script>
-    <script src="<?php echo $path; ?>js/respond.min.js"></script>
+    <script src="<?php echo ADMIN_ASSET_URL; ?>js/html5shiv.min.js"></script>
+    <script src="<?php echo ADMIN_ASSET_URL; ?>js/respond.min.js"></script>
     <![endif]-->
 </head>
 
@@ -122,15 +117,15 @@ die;
 <!-- basic scripts -->
 
 <!--[if !IE]> -->
-<script src="<?php echo $path; ?>js/jquery-2.1.4.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery-2.1.4.min.js"></script>
 
 <!-- <![endif]-->
 
 <!--[if IE]>
-<script src="<?php echo $path; ?>js/jquery-1.11.3.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo $path; ?>js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo ADMIN_ASSET_URL; ?>js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 </script>
 
 </body>

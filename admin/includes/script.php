@@ -1,33 +1,33 @@
 
 <!--[if !IE]> -->
-<script src="<?php echo $path; ?>js/jquery-2.1.4.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery-2.1.4.min.js"></script>
 
 <!-- <![endif]-->
 
 <!--[if IE]>
-<script src="<?php echo $path; ?>js/jquery-1.11.3.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-    if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo $path; ?>js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+    if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo ADMIN_ASSET_URL; ?>js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 </script>
-<script src="<?php echo $path; ?>js/bootstrap.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/bootstrap.min.js"></script>
 
 <!-- page specific plugin scripts -->
 
 <!--[if lte IE 8]>
-<script src="<?php echo $path; ?>js/excanvas.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/excanvas.min.js"></script>
 <![endif]-->
-<script src="<?php echo $path; ?>js/jquery-ui.custom.min.js"></script>
-<script src="<?php echo $path; ?>js/jquery.ui.touch-punch.min.js"></script>
-<script src="<?php echo $path; ?>js/jquery.easypiechart.min.js"></script>
-<script src="<?php echo $path; ?>js/jquery.sparkline.index.min.js"></script>
-<script src="<?php echo $path; ?>js/jquery.flot.min.js"></script>
-<script src="<?php echo $path; ?>js/jquery.flot.pie.min.js"></script>
-<script src="<?php echo $path; ?>js/jquery.flot.resize.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery-ui.custom.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery.ui.touch-punch.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery.easypiechart.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery.sparkline.index.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery.flot.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery.flot.pie.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/jquery.flot.resize.min.js"></script>
 
 <!-- ace scripts -->
-<script src="<?php echo $path; ?>js/ace-elements.min.js"></script>
-<script src="<?php echo $path; ?>js/ace.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/ace-elements.min.js"></script>
+<script src="<?php echo ADMIN_ASSET_URL; ?>js/ace.min.js"></script>
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
