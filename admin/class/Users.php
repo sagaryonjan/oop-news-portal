@@ -5,51 +5,17 @@ include '../config/Database.php';
 class Users extends Database
 {
 
-   function login($request) {
+   public function login($request) {
 
-       $this->validate($request, [
-           'email'     => [ 'required', 'valid_email' ],
-           'password'  => 'required'
-       ]);
+       $email = $request['email'];
+       $password = md5($request['password']);
 
-   }
+       $sql = "SELECT * FROM users WHERE email = '$email' and password = '$password' and status ='1'  ";
 
-   public function validate($request, $rules) {
+       $users  = $this->queryExecute($sql);
 
-       $errors = [];
-       $validate = 1;
-
-       foreach ($rules as $field =>  $value) {
-
-           if($rules[$field] == 'required') {
-
-               if($request[$field] == '') {
-
-                   $errors[$field] = $field.' field is required';
-                   $validate = 0;
-
-               }
-           }
-
-       }
-
-       $end = [];
-
-       if($validate == 0) {
-
-           $end['validate'] = 0;
-           $end['errors'] = $errors;
-
-           return $end;
-       }
-
-       $end['validate'] = $validate;
-
-
-       return $end;
-
-
-
+       print_r($users);
+       die;
    }
 
     public function loginValidation($data) {
@@ -58,15 +24,14 @@ class Users extends Database
 
         $validate = 1;
 
-
         if($data['email'] == '') {
             $errors['email'] = 'Please Fill You email';
             $validate = 0;
-        }
-
-        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = "Invalid email format";
-            $validate = 0;
+        } else {
+            if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = "Invalid email format";
+                $validate = 0;
+            }
         }
 
         if($data['password'] == '') {
@@ -81,11 +46,10 @@ class Users extends Database
             $end['validate'] = 0;
             $end['errors'] = $errors;
 
-            return $end;
+        } else {
+
+            $end['validate'] = $validate;
         }
-
-        $end['validate'] = $validate;
-
 
         return $end;
 

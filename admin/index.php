@@ -8,36 +8,40 @@ include '../config/config.php';
 
 $routes = require 'config/route.php';
 
+
 if(isset($url[1]) && $url[1] == 'admin') {
 
-    foreach ($routes as $route) {
+        if(isset($url[2]) && $url[2] == $routes[$url[2]]['url']) {
 
-        if(isset($url[2]) && $url[2] == $route['url']) {
 
-            if(isset($route['action'])) {
+            if(isset($routes[$url[2]]['action'])) {
 
-                foreach ($route['action'] as $action) {
+                foreach ($routes[$url[2]]['action'] as $action) {
 
                     if(isset($url[3]) && $url[3] == $action['url']) {
 
                         checkIfFileExistsAndInclude($action['file']);
+                        exit;
 
                     }
 
                 }
 
             }
+
             else {
 
-                checkIfFileExistsAndInclude($route['file']);
+                checkIfFileExistsAndInclude($routes[$url[2]]['file']);
+                exit;
 
             }
 
-        }
-    }
+        } else {
 
-  die('no Url');
+            die('no Url');
+        }
+
 
 } else {
-
+    die('no Url');
 }

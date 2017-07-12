@@ -1,7 +1,16 @@
 <?php
-$users = new Users();
 
-$users->login($_POST);
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    $users = new Users();
+
+    $errors = $users->loginValidation($_POST);
+
+    if( $errors['validate'] == 1 ) {
+        $message = $users->login($_POST);
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -72,17 +81,25 @@ $users->login($_POST);
                                     <form action="login" method="POST">
                                         <fieldset>
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" name="email" class="form-control" placeholder="Username" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
+
+                                                <span class="block input-icon input-icon-right">
+                                                    <input type="text" name="email" class="form-control" value="<?php echo old('email'); ?>" placeholder="Email" />
+                                                    <i class="ace-icon fa fa-user"></i>
+                                                </span>
+
+                                                <?php errorDisplay($errors,'email'); ?>
+
                                             </label>
 
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" name="password" class="form-control" placeholder="Password" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
+
+                                                <span class="block input-icon input-icon-right">
+                                                    <input type="password" name="password" value="<?php echo old('password'); ?>" class="form-control" placeholder="Password" />
+                                                    <i class="ace-icon fa fa-lock"></i>
+                                                </span>
+
+                                                <?php errorDisplay($errors,'password'); ?>
+
                                             </label>
 
                                             <div class="space"></div>

@@ -6,6 +6,14 @@
  * Time: 1:50 AM
  */
 
+function debug($data){
+
+    echo '<pre>';
+    print_r($data);
+    die;
+
+}
+
 function checkIfFileExistsAndInclude($file_name) {
 
     if(file_exists($file_name.'.php')) {
@@ -19,10 +27,20 @@ function checkIfFileExistsAndInclude($file_name) {
 
 }
 
-function debug($data){
 
-    echo '<pre>';
-    print_r($data);
-    die;
+function old($field){
+    if(isset($_POST[$field])){
+        return $_POST[$field];
+    } else {
+        return '';
+    }
 
 }
+
+function errorDisplay($errors, $field) {
+
+ if(isset($errors['errors'][$field])) :
+    echo "<span style='color:red'>".  $errors['errors'][$field]. "</span>";
+ endif;
+}
+
